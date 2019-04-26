@@ -1,0 +1,140 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "XC-BASIC",
+	"patterns": [
+		{
+			"include": "#keywords"
+		},
+		{
+			"include": "#operators"
+		},
+		{
+			"include": "#strings"
+		},
+		{
+			"include": "#labels"
+		},
+		{
+			"include": "#comments"
+		},
+		{
+			"include": "#numerics"
+		},
+		{
+			"include": "#hexanumerics"
+		},
+		{
+			"include": "#vardefs"
+		},
+		{
+			"include": "#origin"
+		},
+		{
+			"include": "#proc"
+		},
+		{
+			"include": "#goto"
+		}
+	],
+	"repository": {
+		"origin": {
+			"patterns": [{
+				"name": "keyword.other.xcbasic",
+				"match": "(?i)(origin)\\s(\\$)?+([a-zA-Z0-9_-]+)",
+				"captures": {
+					"1": {
+						"name": "keyword.other.xcbasic"
+					},
+					"2": {
+						"name": "entity.name.function.xcbasic"
+					},
+					"3": {
+						"name": "entity.name.function.xcbasic"
+					}
+				}
+			}]
+		},
+		"proc": {
+			"patterns": [{
+				"name": "entity.name.function.xcbasic",
+				"match": "(?i)(proc|call)\\s+([a-zA-Z0-9_-]+)",
+				"captures": {
+					"1": {
+						"name": "keyword.control.xcbasic"
+					},
+					"2": {
+						"name": "entity.name.function.xcbasic"
+					}
+				}
+			}]
+		},			
+		"goto": {
+			"patterns": [{
+				"name": "entity.name.function.xcbasic",
+				"match": "(?i)(goto|gosub)\\s+([a-zA-Z0-9_-]+)",
+				"captures": {
+					"1": {
+						"name": "keyword.control.xcbasic"
+					},
+					"2": {
+						"name": "entity.name.function.xcbasic"
+					}
+				}
+			}]
+		},
+		"comments": {
+			"patterns": [{
+				"name": "comment.line.xcbasic",
+				"match": "(?i)(rem)(.*)"
+			}]
+		},
+		"vardefs": {
+			"patterns": [{
+				"name": "storage.modifier.xcbasic",
+				"match": "(?i)\\b(const|dim|data|let)\\b"
+			}]
+		},	
+		"labels": {
+			"patterns": [{
+				"name": "entity.name.function.xcbasic",
+				"match": "\\b([a-zA-Z_0-9]*)\\b:"
+			}]
+		},
+		"numerics": {
+			"patterns": [{
+				"name": "constant.numeric.xcbasic",
+				"match": "\\b([0-9]+)\\b"
+			}]
+		},
+		"hexanumerics": {
+			"patterns": [{
+				"name": "constant.numeric.xcbasic",
+				"match": "\\$([0-9a-fA-F]+)\\b"
+			}]
+		},
+		"keywords": {
+			"patterns": [{
+				"name": "keyword.control.xcbasic",
+				"match": "(?i)\\b(charat|dec|end|ferr|for|next|return|if|then|else|inc|incbin|inkey|input|load|peek|poke|print|endproc|rnd|save|sys|textat|usr)\\b"
+			}]
+		},
+		"operators": {
+			"patterns": [{
+				"name": "keyword.operator.xcbasic",
+				"match": "(?i)(\\*|to|/|\\+|-|@|=|<>|<|>|<=|>=|\\band\\b|\\bor\\b|&|\\||\\^)"
+			}]
+		},		
+		"strings": {
+			"name": "string.quoted.double.xcbasic",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.xcbasic",
+					"match": "\\\\."
+				}
+			]
+		}
+	},
+	"scopeName": "source.xcbasic"
+}

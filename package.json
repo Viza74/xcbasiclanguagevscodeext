@@ -1,0 +1,49 @@
+{
+    "name": "xcbasiclanguagevscodeext",
+    "displayName": "XC-BASIC language support",
+    "description": "Syntax highlighting and snippets for XC-BASIC",
+    "publisher": "viza",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.33.0"
+    },
+    "categories": [
+        "Programming Languages",
+        "Snippets"
+    ],
+    "keywords": ["c64","6502","basic","commodore","snippet","grammar"],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Viza74/xcbasiclanguagevscodeext.git"
+    },
+    "icon": "images/xcbasic_logo.png",
+    "contributes": {
+        "languages": [{
+            "id": "xcbasic",
+            "aliases": ["XC-BASIC", "xcbasic"],
+            "extensions": [".xcbas",".bas"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "xcbasic",
+            "scopeName": "source.xcbasic",
+            "path": "./syntaxes/xcbasic.tmLanguage.json"
+        }],
+        "snippets": [{
+            "language": "xcbasic",
+            "path": "./snippets.json"
+        }],
+        "configuration":[
+            {
+                "title": "XC_BASIC configuration",
+                "properties": {
+                    "xcbasic.basefolder": {
+                        "type": "string",
+                        "default": "",
+                        "description": "Absolute path of the XC-BASIC base folder (the one containing the 'bin' and 'third_party' folders)."
+                    }
+                }
+            }
+        ]
+    }
+}

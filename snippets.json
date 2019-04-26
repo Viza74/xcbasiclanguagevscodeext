@@ -1,0 +1,126 @@
+{
+	"dim": {
+		"prefix": "dim",
+		"body": [
+			"dim ${1:varname}[$2]",
+			"$0"
+		],
+		"description": "Maximum two-dimensional arrays are supported and both dimensions are limited to a length of 32767 elements. However, this is just a theoretical limit, in practice you'll run out of memory earlier. Arrays are zero-based (the first index is 0) and only integers may be used as indices."
+	},
+	"data": {
+		"prefix": "data",
+		"body": [
+			"data ${1:varname}[] = $2",
+			"$0"
+		],
+		"description": "The DATA command allocates a one-dimensional static array in memory filled with pre-initialized data in compile time. The array can be used as a regular array in runtime.\nDATA statements can be written anywhere in your program.\nThere is no runtime array bounds checking."
+	},
+	"charat": {
+		"prefix": "charat",
+		"body": [
+			"charat ${1:column}, ${2:row}, ${3:screencode}"
+		],
+		"description": "Outputs a character at the given column and row on the screen. Accepts integers for column and row, and another integer for the screencode. \n Note that the runtime library will not check if the values are within the screen boundaries. As CHARAT is just a convenience wrapper around POKE, it can overwrite memory locations other than the screen memory, thus damaging the program or data. Use it with special care."
+	},
+	"const": {
+		"prefix": "const",
+		"body": [
+			"const ${1:varname} = $0"
+		],
+		"description": "Defines a constant.\nThe constant can be subsequently used as a regular variable, except that it is read-only. The value may not be an expression."
+	},
+	"for": {
+		"prefix": "for",
+		"body": [
+			"for ${1:varname} = ${2:fromexpr} to ${3:toexpr}",
+			"\t$0",
+			"next ${1:varname}"
+		],
+		"description": "The FOR ... NEXT construct will assign the result of fromexpr to the given variable, then iterate the variable until it reaches the value of toexpr, executing the commands between FOR and NEXT as many times as necessary."
+	},
+	"if": {
+		"prefix": "if",
+		"body": [
+			"if ${1:relation} then $0"
+		],
+		"description": "Conditional structure. Executes the statement after THEN if the expression evaluates to true, otherwise the statement after ELSE, if present. ELSE is optional."
+	},
+	"incbin": {
+		"prefix": "incbin",
+		"body": [
+			"incbin ${1:filename}",
+			"$0"
+		],
+		"description": "The INCBIN comand instructs the assembler to include a custom binary file. This is useful to include graphics, music or any kind of data - even machine code routines - in your program.\nNote: the included file must be in the same folder where the XC-BASIC source is.\nImportant note: you have to be very careful when using INCBIN as the binary stream will be \"injected\" into the program right at the point where the compiler finds the command. Make sure that the included data is outside the program flow (unless it's meant to be)."
+	},
+	"let": {
+		"prefix": "let",
+		"body": [
+			"let ${1:varname} = $0"
+		],
+		"description": "Assigns the value of an expression to a variable."
+	},
+	"load": {
+		"prefix": "load",
+		"body": [
+			"load \"${1:filename}\", ${2:device_no}${3:,${4:start_address}}",
+			"$0"
+		],
+		"description": "Loads a binary file from the given device into memory using the KERNAL load routine. If start_address is not specified, the first to bytes (LB/HB) of the file will be used as the start address. Otherwise the first two bytes of the file will be discarded and the rest will be loaded into the memory addres specified by start_address.\nUse the FERR function to get error information on the loading process."
+	},
+	"peek": {
+		"prefix": "peek",
+		"body": [
+			"peek(${1:address})",
+			"$0"
+		],
+		"description": "The PEEK function returns the value that is read from a memory address."
+	},
+	"poke": {
+		"prefix": "poke",
+		"body": [
+			"poke ${1:address}, ${2:value}",
+			"$0"
+		],
+		"description": "Stores a value in the given memory address. Both the address and the value are integers, thus the following conversions will be made:\nThe address will be recognized as an unsigned integer, or if it's an expression, a signed integer will be converted to unsigned\nThe value will be truncated to 8 bits."
+	},
+	"print": {
+		"prefix": "print",
+		"body": [
+			"print \"${1:address}\"$0"
+		],
+		"description": "Prints strings or numbers (values of any expression) on the screen using the KERNAL CHAROUT routine. Any number of arguments are accepted. The arguments must be separated with a comma (,). ASCII strings will be converted to PETSCII in compile-time."
+	},
+	"proc": {
+		"prefix": "proc",
+		"body": [
+			"proc ${1:proc_name}(${2:parameter_list})",
+			"\t$0",
+			"endproc"
+		],
+		"description": "The PROC statement introduces a new procedure that spans until the ENDPROC statement. Procedures are named subroutines that have a unique variable and label scope. Procedures may have one or more parameters that are passed to by the CALL statement. The CALL statement is the only way to execute a procedure (you can't GOTO into a procedure, for example). You can use RETURN to early exit a procedure."
+	},
+	"rnd": {
+		"prefix": "rnd",
+		"body": [
+			"rnd()$0"
+		],
+		"description": "The RND function returns a pseudo-random integer between -32768 and +32767."
+	},
+	"save": {
+		"prefix": "save",
+		"body": [
+			"save \"${1:filename}\", ${2:device_no}, ${3:start_address}, ${4:end_address}",
+			"$0"
+		],
+		"description": "The SAVE command saves the given memory area into a file on the given device.\nThe first two bytes in the file will contain the start address. The last byte written in the file will be end_address - 1.\nPrepend the file name with @0: to overwrite an existing file on disk.\nUse the FERR function to get error information on the saving process."
+	},
+	"textat": {
+		"prefix": "textat",
+		"body": [
+			"textat ${1:column}, ${2:row}, \"${3:string}\"",
+			"$0"
+		],
+		"description": "Outputs a string or a number a the given column and row on the screen. Accepts integers for colum and row, and a string literal or a numeric expression as the text output."
+	}
+}
