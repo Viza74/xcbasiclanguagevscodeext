@@ -85,7 +85,7 @@
 		"comments": {
 			"patterns": [{
 				"name": "comment.line.xcbasic",
-				"match": "(?i)(rem)(.*)"
+				"match": "(?i)(rem|;)(.*)"
 			}]
 		},
 		"vardefs": {
@@ -115,7 +115,7 @@
 		"keywords": {
 			"patterns": [{
 				"name": "keyword.control.xcbasic",
-				"match": "(?i)\\b(charat|dec|end|ferr|for|next|return|if|then|else|inc|incbin|inkey|input|load|peek|poke|print|endproc|rnd|save|sys|textat|usr)\\b"
+				"match": "(?i)\\b(abs|asm|atn|cast|call|charat|cos|curpos|dec|deek|disableirq|doke|enableirq|end|ferr|for|next|fun|endfun|return|if|then|else|inc|incbin|inkey|input|load|lshift|memcpy|memset|memshift|on|origin|peek|poke|pragma|print|endproc|repeat|until|rnd|rshift|save|sgn|sin|sqr|strcmp|strcpy|strlen|strncpy|strpos|sys|tan|textat|usr|val|wait|watch|while|endwhile)\\b"
 			}]
 		},
 		"operators": {
