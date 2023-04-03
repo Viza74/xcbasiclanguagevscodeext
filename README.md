@@ -16,7 +16,7 @@ There are snippets for all the main commands with arguments, all with some handy
 
 ## Requirements
 
-Not really a "requiroment", but of course you will need XC-BASIC to compile anything you write... Get it at: https://github.com/neilsf/XC-BASIC
+Not really a "requirement", but of course you will need XC-BASIC to compile anything you write... Get it at: https://github.com/neilsf/XC-BASIC
 
 ## Extension Settings
 
